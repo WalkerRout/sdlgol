@@ -42,7 +42,10 @@ int main(int argc, char *argv[]){
         .state = RUNNING_STATE
     };
 
-
+    world.grid[5][5] = ALIVE;
+    world.grid[1][9] = ALIVE;
+    world.grid[12][8] = ALIVE;
+    
     SDL_Event event;
     short int quit = 0;
 
@@ -64,7 +67,10 @@ int main(int argc, char *argv[]){
             }
         }
 
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+
+        
+
+        SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255);
         SDL_RenderClear(renderer); // clear the renderer
         render_window(renderer, &world);
         SDL_RenderPresent(renderer);

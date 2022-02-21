@@ -3,8 +3,8 @@
 
 const SDL_Colour SIDE_COLOUR = {.r = 255, .g = 25, .b = 50};
 const SDL_Colour GRID_COLOUR = {.r = 255, .g = 255, .b = 255};
-const SDL_Colour CELL_DEAD_COLOUR = {.r = 0, .g = 255, .b = 0};
-const SDL_Colour CELL_ALIVE_COLOUR = {.r = 100, .g = 100, .b = 100};
+const SDL_Colour CELL_DEAD_COLOUR = {.r = 50, .g = 50, .b = 50};
+const SDL_Colour CELL_ALIVE_COLOUR = {.r = 0, .g = 255, .b = 0};
 const SDL_Colour RESET_STATE_COLOUR = {.r = 200, .g = 200, .b = 200};
 
 
@@ -14,6 +14,17 @@ void render_alive(SDL_Renderer *renderer,
 				  const SDL_Colour *colour,
 				  int i, int j){
 
+	SDL_Rect rect = {.x = i * CELL_WIDTH + 1, .y = j * CELL_HEIGHT + 1, .w = CELL_WIDTH - 1, .h = CELL_HEIGHT - 1};
+	
+	SDL_SetRenderDrawColor(renderer,
+						   colour->r,
+						   colour->g,
+						   colour->b,
+						   0);
+
+	SDL_RenderFillRect(renderer,
+					   &rect);
+
 }
 
 
@@ -22,7 +33,16 @@ void render_dead(SDL_Renderer *renderer,
 				 const world_t *world,
 				 const SDL_Colour *colour,
 				 int i, int j){
+	SDL_Rect rect = {.x = i * CELL_WIDTH + 1, .y = j * CELL_HEIGHT + 1, .w = CELL_WIDTH - 1, .h = CELL_HEIGHT - 1};
+	
+	SDL_SetRenderDrawColor(renderer,
+						   colour->r,
+						   colour->g,
+						   colour->b,
+						   0);
 
+	SDL_RenderFillRect(renderer,
+					   &rect);
 }
 
 
@@ -107,7 +127,6 @@ void render_reset_state(SDL_Renderer *renderer, const world_t *world, const SDL_
 
 
 void render_window(SDL_Renderer *renderer, const world_t *world){
-
 	switch(world->state){
 
 		case RUNNING_STATE:
