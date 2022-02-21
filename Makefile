@@ -7,7 +7,6 @@ OBJ_NAME = $(OBJ_NAME_MAC)
 DEFAULT_SDL_MAC = -I  usr/local/Cellar/sdl2/2.0.20/include -L /usr/local/Cellar/sdl/2.0.20/lib -w -lSDL2main -lSDL2
 DEFAULT_SDL_WIN = -I C:/Development/SDL2_MinGW_64Bit/include -L C:/Development/SDL2_MinGW_64Bit/lib -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2
 DEFAULT_SDL = $(DEFAULT_SDL_MAC)
->>>>>>> c4f2cfbd4cba9087a00fecdd03177786a72f0409
 
 all: comp run
 
