@@ -11,7 +11,7 @@ DEFAULT_SDL = $(DEFAULT_SDL_WIN)
 all: comp run
 
 comp: $(OBJS)
-	gcc $(OBJS) $(DEFAULT_SDL) -o $(OBJ_NAME)
+	gcc $(OBJS) $(DEFAULT_SDL) -lSDL2_image -o $(OBJ_NAME)
 
 run: $(OBJ_NAME)
 	./$(OBJ_NAME)

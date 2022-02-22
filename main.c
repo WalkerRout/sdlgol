@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_Image.h>
 
 #include "include/win.h"
 #include "include/render.h"
@@ -35,7 +36,9 @@ int main(int argc, char *argv[]){
         return EXIT_FAILURE;
     }
 
-
+    SDL_Surface *surface = IMG_Load("resources/icon.png");
+    SDL_SetWindowIcon(window, surface);
+    SDL_FreeSurface(surface);
 
     world_t world = {
         .grid = {DEAD},
