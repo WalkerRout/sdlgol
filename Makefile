@@ -2,16 +2,16 @@ OBJS = *.c include/*.c include/SDLExtensions/*.c
 
 OBJ_NAME_WIN = bin/GameOfLife.exe
 OBJ_NAME_MAC = bin/GameOfLife
-OBJ_NAME = $(OBJ_NAME_WIN)
+OBJ_NAME = $(OBJ_NAME_MAC)
 
-DEFAULT_SDL_MAC = -I  usr/local/Cellar/sdl2/2.0.20/include -L /usr/local/Cellar/sdl/2.0.20/lib -w -lSDL2main -lSDL2
-DEFAULT_SDL_WIN = -I C:/Development/SDL2_MinGW_64Bit/include -L C:/Development/SDL2_MinGW_64Bit/lib -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2
-DEFAULT_SDL = $(DEFAULT_SDL_WIN)
+DEFAULT_SDL_MAC = -I /usr/local/Cellar/sdl2/2.0.20/include -L /usr/local/Cellar/sdl/2.0.20/lib -L /usr/local/Cellar/sdl2_image/2.0.5/lib -w -lSDL2main -lSDL2 -lSDL2_image
+DEFAULT_SDL_WIN = -I C:/Development/SDL2_MinGW_64Bit/include -L C:/Development/SDL2_MinGW_64Bit/lib -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
+DEFAULT_SDL = $(DEFAULT_SDL_MAC)
 
 all: comp run
 
 comp: $(OBJS)
-	gcc $(OBJS) $(DEFAULT_SDL) -lSDL2_image -o $(OBJ_NAME)
+	gcc $(OBJS) $(DEFAULT_SDL) -o $(OBJ_NAME)
 
 run: $(OBJ_NAME)
 	./$(OBJ_NAME)
